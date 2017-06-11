@@ -10,10 +10,6 @@ function rand(min, max) {
     return Math.random() * (max-min) + min;
 }
 
-const dist = (x1, y1, x2, y2) => {
-    Math.sqrt(((x2-x1)^2)+((y2-y1)^2));
-};
-
 function setup() {
   createCanvas(640, 360);
   w = width+16;
