@@ -33,12 +33,6 @@ function Orb() {
         this.yoffset = pyrand(-100, 100);
     }
 
-    this.grow = function() {
-        if (this.growing) {
-            this.r++;
-        }
-    }
-
     this.show = function() {
         this.x = mouseX + this.xoffset; //pyrand(-100, 100);
         this.y = mouseY + this.yoffset; //pyrand(-100, 100);
