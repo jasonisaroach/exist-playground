@@ -18,11 +18,13 @@ function setup() {
             xpoints.push(i);
         }
     }
+    xpoints.push(width);
     for (i=0; i<height; i++) {
         if (i % 10 == 0) {
             ypoints.push(i);
         }
     }
+    ypoints.push(height);
 
     for (i=0; i<width; i++) {
         sinpoints.push(i);
