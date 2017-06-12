@@ -5,15 +5,39 @@
         <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
-        <!--<div class="container">
-            <p>I love working with p5.js!</p>
-        </div>-->
+        <!--<select name="filename" onchange="var filename = this.value; var fileRemove = true;">
+            <option value="sketch-01.js">sketch-01</option>
+            <option value="sketch-02.js">sketch-02</option>
+            <option value="sketch-03.js">sketch-03</option>
+        </select>-->
         <script src="js/p5.min.js"></script>
         <script src="js/p5.dom.min.js"></script>
+        <!--<script>
+            function removeFile(filename, filetype) {
+                // string filename, string css
+                var targetelement = (filetype=="js") ? "script" : (filetype=="css") ? "link" : "none";    // determine element type to create nodelist from
+                // if filetype is js, target is script, else if it's css, target is link. Else, no target
+                var targetattr    = (filetype=="js") ? "src"    : (filetype=="css") ? "href" : "none";    // determine corresponding attribute to test for
+                // if filettype is js, attribute is src, else if it's css then it's href.
+                var allsuspects   = document.getElementsByTagName(targetelement);
+
+                for (var i=allsuspects.length; i>=0; i--) { //search backwards within nodelist for matching elements to remove
+                    if (allsuspects[i] && allsuspects[i].getAttribute(targetattr) != null && allsuspects[i].getAttribute(targetattr).indexOf(filename)!=-1) {
+                        // If there is an element in the list under index i, 
+                        // and it's attribute is not null, 
+                        // AND if it's attribute is not negative,
+                        // 
+                        // remove that element from that page
+                        allsuspects[i].parentNode.removeChild(allsuspects[i]); //remove element by calling parentNode.removeChild()
+                    }
+                }
+            }
+        </script>-->
         <!--<script src="js/sketch-01.js"></script>-->
         <!--<script src="js/sketch-02.js"></script>
         <script src="js/sketch-02-orb.js"></script>-->
-        <script src="js/sketch-03.js"></script>
+        <!--<script src="js/sketch-03.js"></script>-->
+        <script src="js/sketch-04.js"></script>
     </body>
 </html>
 
