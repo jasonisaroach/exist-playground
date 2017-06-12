@@ -40,9 +40,6 @@ function Orb() {
         strokeWeight(1);
         fill(0, 100);
         ellipse(this.x, this.y, this.r, this.r);
-
-        strokeWeight(4);
-        point(this.x, this.y + (this.r / 2) * sin(90));
     }
 }
 
