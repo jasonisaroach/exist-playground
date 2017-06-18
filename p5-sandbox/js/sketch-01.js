@@ -6,11 +6,16 @@ var period = 50.0;         // How many pixels before the wave repeats, crest/cre
 var dx;                    // Value for incrementing x
 var yvalues;               // Using an array to store height values for the wave
 
+// var foo = (arg1, arg2) => {
+//   return arg1 - arg2;
+// };
+
 function rand(min, max) {
     return Math.random() * (max-min) + min;
 }
 
 function setup() {
+  // console.log(foo(42, 21));
   createCanvas(640, 360);
   w = width+16;
   dx = (TWO_PI / period) * xspacing;
