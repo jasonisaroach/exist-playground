@@ -4,6 +4,10 @@ function pyrand(min, max) {
     return Math.random() * (max-min) + min;
 }
 
+Number.prototype.map = function (in_min, in_max, out_min, out_max) {
+  return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 var arcEnds = [];
 var angle1 = 0;
 var angle2 = 0;
@@ -16,6 +20,7 @@ const circle_segment = PI + HALF_PI;
 
 function setup() {
     createCanvas(640, 360);
+    background(0);
 
     for (var i=0; i<360; i++) {
         if (i % 60 == 0) {
@@ -23,9 +28,10 @@ function setup() {
         }
     }
 
-    angle1 = [pyrand(0, HALF_PI/3), pyrand(HALF_PI/3, HALF_PI)];
-    angle2 = [pyrand(HALF_PI, PI), pyrand(PI, circle_segment)];
-    angle3 = [pyrand(circle_segment, (circle_segment+TWO_PI/16)), pyrand((circle_segment+TWO_PI/16), TWO_PI)];
+    // angle1 = [pyrand(0, HALF_PI/3), pyrand(HALF_PI/3, HALF_PI)];
+    angle1 = [0, TWO_PI/6];
+    angle2 = [(TWO_PI/6) * 2, (TWO_PI/6) * 3];
+    angle3 = [(TWO_PI/6) * 4, (TWO_PI/6) * 5];
 
     // slide1 = createSlider(0, (TWO_PI-PI/16)-angle1, 0.1);
     // slide2 = createSlider(0, (TWO_PI-PI/16)-angle2, 0.1);
@@ -41,17 +47,22 @@ function draw() {
     // text("Angle2: " + angle2, 10, 40, 100, 50);
     
     strokeWeight(4);
-    // fill(255, 50);
-    fill(255);
+    fill(255, 50);
+    // noFill();
 
+    stroke(255, 0, 0);
     arc(width/2, height/2, 200, 200, angle1[0], angle1[1]);
+
+    stroke(0, 255, 0);
     arc(width/2, height/2, 200, 200, angle2[0], angle2[1]);// +slide1.value());
+
+    stroke(0, 0, 255);
     arc(width/2, height/2, 200, 200, angle3[0], angle3[1]);// +slide2.value());
 
     angle1[0] += 0.02;
     angle2[0] += 0.02;
-    angle3[0] += 0.04;
-    angle1[1] += 0.04;
-    angle2[1] += 0.08;
-    angle3[1] += 0.08;
+    angle3[0] += 0.02;
+    angle1[1] += 0.02;
+    angle2[1] += 0.02;
+    angle3[1] += 0.02;
 }

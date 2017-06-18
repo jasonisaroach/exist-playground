@@ -6,7 +6,7 @@ var orbs = [];
 
 function setup() {
     createCanvas(640, 360);
-    for (var i=0;i<100;i++) {
+    for (var i=0;i<200;i++) {
         orbs[i] = new Orb();
         // ellipses.push([Math.floor(), Math.floor()]);
     }

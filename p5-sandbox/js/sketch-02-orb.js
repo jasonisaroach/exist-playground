@@ -6,18 +6,17 @@ function Orb() {
     this.y = height - this.ypad;
     this.yspeed = pyrand(1, 5);
     this.xspeed = pyrand(1, 5);
+    this.strokehold = "#FFFFFF";
 
 
     this.wiggleX = function () {
         this.x += pyrand(-5, 5);
 
-        if (this.x > width || this.x < 0) {
+        if ( this.x < 0 ||  this.x > width) {
             this.x = width/2;
+            this.y = height;
+            this.strokehold = "#FF0000";
         }
-    }
-
-    this.wiggleY = function () {
-        this.y += pyrand(-5, 5);
     }
 
     this.rise = function () {
@@ -25,13 +24,14 @@ function Orb() {
 
         if (this.y < 0) { 
             this.y = height;
+            this.strokehold = "#00FF00";
         }
     }
 
     this.show = function () {
-        stroke(127);
+        stroke(this.strokehold);
         strokeWeight(2);
-        fill(255);
+        fill(this.strokehold);
         ellipse(this.x, this.y, this.r, this.r);
     }
 }

@@ -27,18 +27,25 @@ function Orb() {
     this.r = pyrand(4, 16);
     this.xoffset = pyrand(-100, 100);
     this.yoffset = pyrand(-100, 100);
+    this.stroke_color = "#000000";
     
     this.relocate = function() {
         this.xoffset = pyrand(-100, 100);
         this.yoffset = pyrand(-100, 100);
+        this.stroke_color = "#000000";
     }
 
     this.show = function() {
         this.x = mouseX + this.xoffset; //pyrand(-100, 100);
         this.y = mouseY + this.yoffset; //pyrand(-100, 100);
-        stroke(0);
+
+        if (this.x < 0 + this.r || this.x > width - this.r || this.y < 0 + this.r || this.y > height - this.r) {
+            this.stroke_color = "#FFFFFF";
+        }
+
+        stroke(this.stroke_color);
         strokeWeight(1);
-        fill(0, 100);
+        fill(255, 50);
         ellipse(this.x, this.y, this.r, this.r);
     }
 }
@@ -48,7 +55,7 @@ var Orbs = [];
 function setup() {
     createCanvas(640, 360);
 
-    for (var i = 0; i<100; i++) {
+    for (var i = 0; i<250; i++) {
         Orbs[i] = new Orb();
     }
 }
