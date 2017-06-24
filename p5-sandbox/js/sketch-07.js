@@ -4,18 +4,19 @@ function pyrand(min, max) {
 
 function Orb() {
     // this.pos = createVector(pyrand(0, width), pyrand(0, height));
-    this.pos = createVector(pyrand((width/2)-200, (width/2)+200), pyrand((height/2)-200, (height/2)+200));
+    this.pos = createVector(random(width/2-200, width/2+100), random(height/2-200, height/2+200));
     this.vel = createVector(pyrand(-1, 1), pyrand(-1, 1));
-    this.r = 10;
-    this.accel = 0.16;
+    this.r = 14;
+    this.accel = 0.04;
 
     this.update = function() {
+        this.checkEdges();
         this.pos.add(this.vel);
     };
 
     this.show = function() {
         noStroke();
-        fill(255, 50);
+        fill(255, 100);
 
         ellipse(this.pos.x, this.pos.y, this.r, this.r);
     };
@@ -34,23 +35,20 @@ function Orb() {
     };
 
     this.checkEdges = function() {
-        if (this.pos.x > width) {
-            this.pos.x = 0;
-            this.vel.x = 0;
-        } 
-        else if (this.pos.x < 0) {
-            this.pos.x = width;
-            this.vel.x = 0;
-        }
+        if (this.pos.x < 0 + this.r/2) {
+            this.vel.x = this.vel.x * -1;
+        } else if (this.pos.x > width - this.r/2) {
+            this.vel.x = this.vel.x * -1;
+        };
+        if (this.pos.y < 0 + this.r/2) { 
+            this.vel.y = this.vel.y * -1;
+        } else if(this.pos.y > height - this.r/2) {
+            this.vel.y = this.vel.y * -1;
+        };
 
-        if (this.pos.y > height) {
-            this.pos.y = 0;
-            this.vel.y = 0;
-        } 
-        else if (this.pos.y < 0) {
-            this.pos.y = height;
-            this.vel.y = 0;
-        }
+        // if (this.pos.x < width/2+60 && this.pos.y < height/2+60 && this.pos.y > height/2-60 || this.pos.x > width/2-60) {
+        //     this.pos.x
+        // };
     };
 }
 
@@ -73,7 +71,6 @@ function draw() {
     for (var i = 0; i<popul.length; i++) {
         popul[i].update();
         popul[i].seekLocation(target);
-        popul[i].checkEdges();
         popul[i].show();
     }
 
