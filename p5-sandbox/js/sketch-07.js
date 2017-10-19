@@ -57,7 +57,7 @@ var target;
 
 function setup() {
     // createCanvas(640, 360);
-    createCanvas(640, 360);
+    createCanvas(1080, 608);
     // background(0);
 
     target = [width/2, height/2];

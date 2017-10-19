@@ -1,6 +1,8 @@
+var target_r = 100;
+
 function Mover() {
     this.pos = createVector(random(0, width), random(0, height));
-    this.vel = createVector(random(-3, 3), random(-3, 3));
+    this.vel = createVector(random(random(-5, -3), random(3, 5)), random(random(-5, -3), random(3, 5)));
     this.stroke = "#FFFFFF";
     this.weight = 8;
     this.cent_touch = false;
@@ -14,7 +16,7 @@ function Mover() {
         }
     }
     this.checkCentColl = () => {
-        this.cent_touch = collidePointCircle(this.pos.x, this.pos.y, width/2, height/2, 100);
+        this.cent_touch = collidePointCircle(this.pos.x, this.pos.y, width/2, height/2, target_r);
         if (this.cent_touch) {
             this.stroke = "#FF0000";
             this.weight = 4;
@@ -36,7 +38,7 @@ function Mover() {
 var points = [];
 
 var setup = () => {
-    createCanvas(640, 360);
+    createCanvas(1080, 608);
     stroke(255);
     strokeWeight(1);
     fill(255);
@@ -48,12 +50,27 @@ var setup = () => {
 var draw = () => {
     background(0);
 
+    if (keyIsPressed && keyCode == 37) {
+        target_r -= 2;
+    } else if (keyIsPressed && keyCode == 39) {
+        target_r += 2;
+    }
+
     noStroke();
     fill(255, 50);
-    ellipse(width/2, height/2, 100, 100);
+    ellipse(width/2, height/2, target_r, target_r);
 
     for (var i = 0; i<points.length; i++) {
         points[i].update();
         points[i].show();
+    }
+}
+
+function keyPressed() {
+    if (keyCode == 40) {
+        points = [];
+        for (var i = 0; i<100; i++) {
+            points[i] = new Mover();
+        }
     }
 }

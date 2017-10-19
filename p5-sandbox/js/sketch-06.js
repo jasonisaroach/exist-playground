@@ -1,37 +1,62 @@
-var arc1;
-var arc2;
-var arc3;
 
-function setup() {
-    createCanvas(640, 360);
-    arc1 = [0, TWO_PI/6];
-    arc2 = [(TWO_PI/6) * 2, (TWO_PI/6) * 3];
-    arc3 = [(TWO_PI/6) * 4, (TWO_PI/6) * 5];
-}
-
-function draw() {
-    background("#2e2e2e");
-    stroke(255);
-    // strokeWeight(2);
-    // noFill();
-    fill(255, 50)
-
-    // arc(width/2, height/2, 300, 300, arc1[0], arc1[1]);
-    // arc(width/2, height/2, 300, 300, arc2[0], arc2[1]);
-    // arc(width/2, height/2, 300, 300, arc3[0], arc3[1]);
+function distance(x1, y1, x2, y2) {
+    return sqrt(((x2 - x1)**2) + ((y2-y1)**2));
+  }
+  
+  var coords = [];
+  var coord_pop = 500;
+  var coord_dist = 50;
+  var text, link;
+  function setup() {
+    createCanvas(1080, 608);
     
-    arc(width/2, height/2, 110, 300, arc1[0], arc1[1]);
-    arc(width/2, height/2, 120, 300, arc2[0], arc2[1]);
-    arc(width/2, height/2, 130, 300, arc3[0], arc3[1]);
+    text = createDiv("Left, Down, Right")
+    text.position(20, 20);
+    link = createA("../", "index")
+    link.position(20, 40);
+  
+    stroke(255);
+    strokeWeight(2);
+    fill(255, 50);
+  
+    for (var i=0; i<coord_pop; i++) {
+      coords.push([random(0, width), random(0, height)]);
+      // print(coords[i]); 
+    }
+    // print(coords);
+  }
+  
+  function draw() {
+    background(0);
+    stroke(255);
+    strokeWeight(2);
+    fill(255, 50);
+    for (var i=0; i<coords.length; i++) {
+      for (var j=0; j<coords.length; j++) {
+        if (distance(coords[i][0], coords[i][1], coords[j][0], coords[j][1]) < coord_dist && distance(coords[i][0], coords[i][1], coords[j][0], coords[j][1]) > 0) {
+          line(coords[i][0], coords[i][1], coords[j][0], coords[j][1]);
+        }
+      }
+    }
 
-    // arc(width/2, height/2, 300, 150, arc1[0], arc1[1]);
-    // arc(width/2, height/2, 300, 150, arc2[0], arc2[1]);
-    // arc(width/2, height/2, 300, 150, arc3[0], arc3[1]);
-
-    arc1[0] += 0.02;
-    arc1[1] += 0.02;
-    arc2[0] += 0.02;
-    arc2[1] += 0.02;
-    arc3[0] += 0.02;
-    arc3[1] += 0.02;
-}
+    if (keyIsPressed && keyCode == 37) {
+        coord_dist -= 1;
+    } else if (keyIsPressed && keyCode == 39) {
+        coord_dist += 1;
+    }
+  }
+  
+  function keyPressed() {
+    if (keyCode == 40) {
+      coords = [];
+      for (var i=0; i<coord_pop; i++) {
+        coords.push([random(0, width), random(0, height)]);
+        // print(coords[i]); 
+      }
+    }
+    // } else if (keyCode == 37 && coord_dist > 0) {
+    //   coord_dist -= 5;
+    // } else if (keyCode == 39 && coord_dist < 100) {
+    //   coord_dist += 5;
+    // }
+  }

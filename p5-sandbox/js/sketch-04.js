@@ -12,7 +12,7 @@ function mouseClicked() {
 }
 
 function setup() {
-    createCanvas(640, 360);
+    createCanvas(1080, 608);
     for (i=0; i<width; i++) {
         if (i % 10 == 0) {
             xpoints.push(i);

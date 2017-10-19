@@ -16,7 +16,8 @@ function rand(min, max) {
 
 function setup() {
   // console.log(foo(42, 21));
-  createCanvas(640, 360);
+  // createCanvas(640, 360);
+  createCanvas(1080, 608);
   w = width+16;
   dx = (TWO_PI / period) * xspacing;
   // 3.14159265 * 2  = 6.2831853

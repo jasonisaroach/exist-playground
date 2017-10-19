@@ -51,9 +51,13 @@ function Orb() {
 }
 
 var Orbs = [];
+var interact;
 
 function setup() {
-    createCanvas(640, 360);
+    createCanvas(1080, 608);
+
+    interact = createDiv("interaction: mouse & clicking.");
+    interact.position(20, 20);
 
     for (var i = 0; i<250; i++) {
         Orbs[i] = new Orb();
