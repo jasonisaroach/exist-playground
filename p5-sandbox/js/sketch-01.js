@@ -1,7 +1,7 @@
 var xspacing = 8;          // X-Distance between each point on the wave
 var w;                     // Width of the wave, extends partially offscreen for better viewing
 var theta = 0.0;           // Starts the angle of the wave at 0
-var amplitude = 10;        // Height of wave, +5 from height/2 to -5 from height/2
+var amplitude = 20;        // Height of wave, +5 from height/2 to -5 from height/2
 var period = 50.0;         // How many pixels before the wave repeats, crest/crest to trough/trough
 var dx;                    // Value for incrementing x
 var yvalues;               // Using an array to store height values for the wave
