@@ -77,3 +77,10 @@ function Ball() {
         ellipse(this.pos.x, this.pos.y, this.r, this.r);
     };
 }
+
+function mouseClicked() {
+    for (var i=0; i<balls.length; i++) {
+        balls[i].vel.x *= random(-0.1, 0.1);
+        balls[i].vel.y *= random(-0.1, 0.1);
+    }
+}

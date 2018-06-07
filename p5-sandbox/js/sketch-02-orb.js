@@ -10,7 +10,7 @@ function Orb() {
 
 
     this.wiggleX = function () {
-        this.x += pyrand(-5, 5);
+        this.x += pyrand(-3, 3);
 
         if ( this.x < 0 ||  this.x > width) {
             this.x = width/2;

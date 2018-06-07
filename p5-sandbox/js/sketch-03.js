@@ -39,7 +39,10 @@ function Orb() {
         this.x = mouseX + this.xoffset; //pyrand(-100, 100);
         this.y = mouseY + this.yoffset; //pyrand(-100, 100);
 
-        if (this.x < 0 + this.r || this.x > width - this.r || this.y < 0 + this.r || this.y > height - this.r) {
+        // if (this.x < 0 + this.r || this.x > width - this.r || this.y < 0 + this.r || this.y > height - this.r) {
+        //     this.stroke_color = "#FFFFFF";
+        // }
+        if (collideLineCircle(0, 0, width, 0, this.x, this.y, this.r) || collideLineCircle(0, 0, 0, height, this.x, this.y, this.r) || collideLineCircle(width, 0, width, height, this.x, this.y, this.r) || collideLineCircle(0, height, width, height, this.x, this.y, this.r)) {
             this.stroke_color = "#FFFFFF";
         }
 

@@ -9,6 +9,7 @@ Number.prototype.map = function (in_min, in_max, out_min, out_max) {
 }
 
 var arcEnds = [];
+var angleConst = 0.02;
 var angle1 = 0;
 var angle2 = 0;
 var angle3 = 0;
@@ -19,7 +20,7 @@ const HALF_PI = PI/2;
 const circle_segment = PI + HALF_PI;
 
 function setup() {
-    createCanvas(640, 360);
+    createCanvas(1280, 720);
     background(0);
 
     for (var i=0; i<360; i++) {
@@ -59,10 +60,14 @@ function draw() {
     stroke(0, 0, 255);
     arc(width/2, height/2, 200, 200, angle3[0], angle3[1]);// +slide2.value());
 
-    angle1[0] += 0.02;
-    angle2[0] += 0.02;
-    angle3[0] += 0.02;
-    angle1[1] += 0.02;
-    angle2[1] += 0.02;
-    angle3[1] += 0.02;
+    angle1[0] += angleConst;
+    angle2[0] += angleConst;
+    angle3[0] += angleConst;
+    angle1[1] += angleConst;
+    angle2[1] += angleConst;
+    angle3[1] += angleConst;
+}
+
+function mouseClicked() {
+    angleConst *= -1;
 }
